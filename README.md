@@ -1,6 +1,6 @@
 # :calendar: Maya's Calendar Api
 
-This Api has been build with NestJS framework (Node.js + TypeScript).
+This Api has been built with NestJS framework (Node.js + TypeScript).
 
 ### Installation
 
