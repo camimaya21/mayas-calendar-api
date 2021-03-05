@@ -1,7 +1,7 @@
 {
   "name": "mayas-calendar-api",
   "version": "0.0.1",
-  "description": "calendar api",
+  "description": "calendar's api",
   "author": "camimaya21",
   "private": true,
   "license": "UNLICENSED",
@@ -28,6 +28,7 @@
     "@nestjs/common": "^7.6.13",
     "@nestjs/core": "^7.6.13",
     "@nestjs/platform-express": "^7.6.13",
+    "@prisma/client": "^2.18.0",
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

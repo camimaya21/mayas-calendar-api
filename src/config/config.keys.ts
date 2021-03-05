@@ -1,3 +1,3 @@
 export enum ConfigKeys {
-  PORT = 'PORT',
+  PORT = 'PORT'
 }
