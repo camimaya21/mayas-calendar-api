@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^7.6.13",
     "@prisma/client": "^2.18.0",
     "class-validator": "^0.13.1",
+    "date-fns": "^2.19.0",
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
