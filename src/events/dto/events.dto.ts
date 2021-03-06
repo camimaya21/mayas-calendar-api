@@ -10,6 +10,15 @@ export class CreateEventDTO {
   endDate: string;
 }
 
+export class UpdateEventDTO {
+  title: string;
+  description: string;
+  @IsDateString()
+  startDate: string;
+  @IsDateString()
+  endDate: string;
+}
+
 export class EventDTO {
   @IsUUID()
   id: string;
