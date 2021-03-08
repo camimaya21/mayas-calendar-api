@@ -1,24 +1,21 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Event {
-  internal_id   Int       @id @default(autoincrement())
-  id            String    @unique @default(uuid())
-  title         String    @db.VarChar(255)
-  description   String
-  start_date    DateTime  @default(now())
-  end_date      DateTime  @default(now())
-  created_at    DateTime  @default(now())
-  updated_at    DateTime  @default(now())
+  internal_id Int      @id @default(autoincrement())
+  id          String   @unique @default(uuid())
+  title       String   @db.VarChar(255)
+  description String
+  start_date  DateTime @default(now())
+  end_date    DateTime @default(now())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
 
   @@map("events")
 }
