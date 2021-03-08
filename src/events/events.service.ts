@@ -1,6 +1,6 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { REPOSITORIES } from 'src/shared/constants/injectables.constants';
-import { CreateEventDTO, EventDTO, UpdateEventDTO } from './dto/events.dto';
+import { REPOSITORIES } from '../shared/constants/injectables.constants';
+import { CreateEventDTO, DeleteEventResult, EventDTO, UpdateEventDTO } from './dto/events.dto';
 
 import {
   IEventsRepository,
@@ -10,7 +10,7 @@ import {
 } from './types/events.types';
 
 @Injectable()
-export class EventService implements IEventsService {
+export class EventsService implements IEventsService {
   constructor(
     @Inject(REPOSITORIES.IEventsRepository) private eventsRepository: IEventsRepository
   ) {}
@@ -32,18 +32,18 @@ export class EventService implements IEventsService {
 
   async update(id: string, data: UpdateEventDTO): Promise<EventDTO> {
     await this._checkEventExists(id);
-    const res = await this.eventsRepository.update({ data, where: { id } });
+    const res = await this.eventsRepository.update({ id }, data);
     return EventDTO.entityToDTO(res);
   }
 
-  async delete(id: string): Promise<EventDTO> {
+  async delete(id: string): Promise<DeleteEventResult> {
     await this._checkEventExists(id);
     const res = await this.eventsRepository.delete({ id });
-    return EventDTO.entityToDTO(res);
+    return { id: res.id, result: 'Event was deleted' };
   }
 
   private async _checkEventExists(id: string) {
-    const event = await this.eventsRepository.findOne({ id: id });
+    const event = await this.eventsRepository.findOne({ id });
     if (!event) {
       throw new NotFoundException(`Event with id ${id} not found`);
     }

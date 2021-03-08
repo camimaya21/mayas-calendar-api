@@ -39,3 +39,8 @@ export class EventDTO {
     };
   }
 }
+
+export class DeleteEventResult {
+  id: string;
+  result: string;
+}

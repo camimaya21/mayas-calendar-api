@@ -4,10 +4,9 @@ import { Event } from '@prisma/client';
 import {
   IEventsRepository,
   ParamsFindAllEvents,
-  ParamsFindSingleEvent,
-  ParamsUpdateEvent
+  ParamsFindSingleEvent
 } from './types/events.types';
-import { CreateEventDTO } from './dto/events.dto';
+import { CreateEventDTO, UpdateEventDTO } from './dto/events.dto';
 import { toDate } from 'date-fns';
 
 @Injectable()
@@ -36,8 +35,7 @@ export class EventsRepository implements IEventsRepository {
     });
   }
 
-  async update(params: ParamsUpdateEvent): Promise<Event> {
-    const { data, where } = params;
+  async update(params: ParamsFindSingleEvent, data: UpdateEventDTO): Promise<Event> {
     return this.prisma.event.update({
       data: {
         title: data.title,
@@ -45,7 +43,7 @@ export class EventsRepository implements IEventsRepository {
         start_date: toDate(new Date(data.startDate)),
         end_date: toDate(new Date(data.endDate))
       },
-      where
+      where: { id: params.id, internal_id: params.internalId }
     });
   }
 
