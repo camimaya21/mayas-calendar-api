@@ -1,0 +1,7 @@
+# Build stage
+FROM docker.io/node:fermium AS builder
+WORKDIR /usr/src/app
+# Copy src to image
+COPY . .
+RUN yarn && yarn db:generate && yarn db:migration:create
+ENTRYPOINT ["yarn", "start:dev"]
