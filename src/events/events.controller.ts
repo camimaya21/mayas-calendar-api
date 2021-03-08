@@ -1,5 +1,5 @@
 import { Body, Delete, Get, Inject, Param, Post, Put, Query, Controller } from '@nestjs/common';
-import { SERVICES } from 'src/shared/constants/injectables.constants';
+import { SERVICES } from '../shared/constants/injectables.constants';
 import { CreateEventDTO, EventDTO, UpdateEventDTO } from './dto/events.dto';
 import { IEventsService, ParamsFindAllEvents, ParamsFindSingleEvent } from './types/events.types';
 
