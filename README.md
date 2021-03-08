@@ -1,44 +1,66 @@
 # :calendar: Maya's Calendar Api
 
-This Api has been built with NestJS framework (Node.js + TypeScript).
+This Api has been built with NestJS framework (Node.js + TypeScript). To start using this project you have to follow the next steps:
 
-### Installation
+### 1. Install the packages
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
-### Pre-config
+### 2. Pre-config: add a .env file with the database and port information
 
-Add .env file with your database connection and PORT information.
+Create a `.env` file in the root of the project, and add your `DATABASE_URL` connection and `PORT` information.
 
 ```
 PORT=5000
-DATABASE_URL="postgresql://postgres:password@localhost:5432/mayascalendar?schema=public"
+DATABASE_URL="postgresql://postgres:password@localhost:5445/mayascalendar?schema=public"
 ```
 
-### Running the app
+### 3. Run Postgresql DB image with Docker
+
+This project uses Postgresql DB as Database, so the best way to make it work is using a Docker image. So, first of all make sure to have Docker in your computer and finally run the next instruction into your terminal to start the postgresql Database container.
+
+```
+docker run -p 5445:5432 --name mayas-postgres -e POSTGRES_PASSWORD=password postgres
+```
+
+WARNING:
+The password added in the `POSTGRES_PASSWORD` environment variable should be the same added in the .env `DATABASE_URL` and the first port should be the same as well in order to succesfully connect with the DB.
+
+`postgres:password@localhost:5445`
+
+
+### 4. Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
-### Test
+### 5. Try the api's endpoints using Postmap, Insomnia or curl
+
+- **Find events**           `GET http://localhost:5000/api/events`
+- **Find one event**        `GET http://localhost:5000/api/events/:id`
+- **Create a new event**    `POST http://localhost:5000/api/events`
+- **Update one event**      `PUT http://localhost:5000/api/events/:id`
+- **Delete one event**      `DELETE http://localhost:5000/api/events/:id`
+
+### Optional: Check the app's tests
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
