@@ -4,9 +4,9 @@ import { REPOSITORIES, SERVICES } from 'src/shared/constants/injectables.constan
 import { DatabaseModule } from 'src/shared/database/database.module';
 import { EventsController } from './events.controller';
 import { EventsRepository } from './events.repository';
-import { EventService } from './events.service';
+import { EventsService } from './events.service';
 
-const eventsService = { provide: SERVICES.IEventsService, useClass: EventService };
+const eventsService = { provide: SERVICES.IEventsService, useClass: EventsService };
 const eventsRespository = { provide: REPOSITORIES.IEventsRepository, useClass: EventsRepository };
 @Module({
   providers: [eventsService, eventsRespository],

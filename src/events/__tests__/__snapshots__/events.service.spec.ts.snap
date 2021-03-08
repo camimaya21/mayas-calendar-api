@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventsService Update methods should properly call events.repository.update if event exist 1`] = `
+Object {
+  "description": "this is an example body",
+  "endDate": "2021-03-07T11:00:00.000Z",
+  "id": "01123b18-cf8b-451f-a699-441397f02949",
+  "startDate": "2021-03-07T10:00:00.000Z",
+  "title": "A better title",
+}
+`;
