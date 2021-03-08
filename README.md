@@ -12,17 +12,18 @@ $ yarn install
 
 Create a `.env` file in the root of the project, and add your `DATABASE_URL` connection and `PORT` information.
 
-```
+```bash
 PORT=5000
-DATABASE_URL="postgresql://postgres:password@localhost:5445/mayascalendar?schema=public"
+DATABASE_URL="postgresql://postgres:password@localhost:5445/mayascalendar"
 ```
 
 ### 3. Run Postgresql DB image with Docker
 
 This project uses Postgresql DB as Database, so the best way to make it work is using a Docker image. So, first of all make sure to have Docker in your computer and finally run the next instruction into your terminal to start the postgresql Database container.
 
-```
-docker run -p 5445:5432 --name mayas-postgres -e POSTGRES_PASSWORD=password postgres
+```bash
+docker rm mayas-postgres /
+docker run -p 5445:5432 -e POSTGRES_PASSWORD=password --name mayas-postgres postgres
 ```
 
 WARNING:
@@ -30,8 +31,15 @@ The password added in the `POSTGRES_PASSWORD` environment variable should be the
 
 `postgres:password@localhost:5445`
 
+### 4. Create de database and migrate the Prisma schemas
 
-### 4. Running the app
+In yours project folder execute the script to create the DB `mayascalendar` into Postgress and migrate Prisma schemas.
+
+```bash
+yarn db:generate && yarn db:migration:create
+```
+
+### 5. Running the app
 
 ```bash
 # development
@@ -44,7 +52,7 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
-### 5. Try the api's endpoints using Postmap, Insomnia or curl
+### 6. Try the api's endpoints using Postmap, Insomnia or curl
 
 - **Find events**           `GET http://localhost:5000/api/events`
 - **Find one event**        `GET http://localhost:5000/api/events/:id`
