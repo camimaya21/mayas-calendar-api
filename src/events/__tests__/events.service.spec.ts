@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TEST_EVENT_ID, EVENTS_REPOSITORY_MOCK_DATA } from '../__mocks__/events.mock.data';
-import { REPOSITORIES, SERVICES } from '../../shared/constants/injectables.constants';
+import { REPOSITORIES } from '../../shared/constants/injectables.constants';
 import { EventsService } from '../events.service';
 import { CreateEventDTO, UpdateEventDTO } from '../dto/events.dto';
 import { MockEventsRepository } from '../__mocks__/events.repository.mock';
