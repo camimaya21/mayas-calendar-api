@@ -31,12 +31,12 @@ The password added in the `POSTGRES_PASSWORD` environment variable should be the
 
 `postgres:password@localhost:5445`
 
-### 4. Create de database and migrate the Prisma schemas
+### 4. Create de database, migrate the Prisma schemas and seed the DB
 
-In yours project folder execute the script to create the DB `mayascalendar` into Postgress and migrate Prisma schemas.
+In yours project folder execute the script to create the DB `mayascalendar` into Postgress, migrate Prisma schemas and seed the DB. This script has to be execute only to initialize the DB and seed it.
 
 ```bash
-yarn db:generate && yarn db:migration:create
+yarn db:generate && yarn db:migration:create && yarn db:seed
 ```
 
 ### 5. Running the app
