@@ -3,5 +3,5 @@ FROM docker.io/node:fermium AS builder
 WORKDIR /usr/src/app
 # Copy src to image
 COPY . .
-RUN yarn && yarn db:generate && yarn db:migration:create
+RUN yarn && yarn db:generate && yarn db:migration:create && yarn db:seed
 ENTRYPOINT ["yarn", "start:dev"]
