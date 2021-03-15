@@ -1,0 +1,16 @@
+node_modules
+.dockerignore
+.gitignore
+README.md
+.vscode
+coverage
+.circleci
+.github
+config/scripts
+Dockerfile
+Dockerfile.dev
+.git
+.eslintrc
+.eslintignore
+.prettierrc
+.gitlab-ci.yml
