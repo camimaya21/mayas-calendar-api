@@ -3,7 +3,7 @@
 This Api has been built with NestJS framework (Node.js + TypeScript). To start using this project you have to follow the next steps:
 
 
-## The easy start :rocket:
+## The easy way to start :rocket:
 
 Use `startDev.sh` script to easily start the project :wink:
 
